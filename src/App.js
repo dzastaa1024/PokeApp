@@ -15,7 +15,7 @@ export default class App extends Component {
   render() {
     return (
       <Router>
-        <>
+        <Wrapper>
           <GlobalStyles />
           <Route exact path="/homepage" component={HomePage} />
           <Route path="/pokedex" component={Pokedex} />
@@ -24,10 +24,12 @@ export default class App extends Component {
           <Route path="/items" component={Items} />
           <Route path="/location" component={Location} />
           <Route path="/typeCharts" component={TypeCharts} />
-        </>
+        </Wrapper>
       </Router>
     );
   }
 }
 
-const Wrapper = styled.div``;
+const Wrapper = styled.div`
+  height: 100%;
+`;

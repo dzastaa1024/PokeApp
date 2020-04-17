@@ -15,9 +15,10 @@ const GlobalStyle = createGlobalStyle`
 		font-size: 1.4rem;
 		font-family: "Lato", sans-serif;
 		line-height: 1.3;
-		background-color: black;
+		background: #5dd65d;
 		color: rgb(64, 78, 95);
   }
+
 #root {
 	height: 100vh;
 	overflow : hidden;
@@ -30,9 +31,7 @@ const GlobalStyle = createGlobalStyle`
 		font-family: "Lato", sans-serif;
 		background-color: transparent;
 	}
-	.expanded {
-		height: 100%;
-	}
+	
 `;
 
 export default GlobalStyle;
