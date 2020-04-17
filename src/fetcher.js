@@ -16,3 +16,11 @@ export const fetchPokedexs = async () => {
 
   return pokemons;
 };
+
+export const fetchAbility = async () => {
+  const url = `${baseUrl}ability`;
+
+  const res = await axios.get(url);
+
+  return res.data.results;
+};
