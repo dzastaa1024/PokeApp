@@ -1,24 +1,22 @@
 import axios from "axios";
 
-const baseUrl = "https://pokeapi.co/api/v2/";
+const baseUrl = "https://pokeapi.co/api/v2";
 
-export const fetchPokedexs = async () => {
-  const pokemons = [];
+export const fetchPokemon = async (url) => {
+  const pokemon = await axios.get(url);
 
-  const url = `${baseUrl}pokemon/`;
+  return pokemon.data;
+};
 
-  const res = await axios.get(url);
+export const fetchPokemons = async () => {
+  const url = `${baseUrl}/pokemon`;
+  const pokemons = await axios.get(url);
 
-  res.data.results.forEach(async (pokemon) => {
-    const eachPokemon = await axios.get(pokemon.url);
-    pokemons.push(eachPokemon.data);
-  });
-
-  return pokemons;
+  return pokemons.data.results;
 };
 
 export const fetchAbility = async () => {
-  const url = `${baseUrl}ability`;
+  const url = `${baseUrl}/ability`;
 
   const res = await axios.get(url);
 

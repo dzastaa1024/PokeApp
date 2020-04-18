@@ -2,28 +2,29 @@ import React, { Component } from "react";
 import * as fetcher from "../../fetcher";
 import styled from "styled-components";
 
-import List from "../../components/List";
+import PokemonList from "../../components/PokemonList";
 
 export default class Pokedex extends Component {
   state = {
-    pokemons: [],
     abilities: [],
+    pokemons: [],
   };
 
   async componentDidMount() {
-    const pokedex = await fetcher.fetchPokedexs();
     const abilities = await fetcher.fetchAbility();
+    const pokemons = await fetcher.fetchPokemons();
 
-    console.log(abilities);
+    console.log("moje pokemony ", pokemons);
 
     this.setState({
-      pokemons: pokedex,
       abilities: abilities,
+      pokemons: pokemons,
     });
   }
 
   render() {
     const { abilities, pokemons } = this.state;
+    // console.log("Pokedex", pokemons.length);
     return (
       <Wrapper>
         <SideBar>
@@ -34,7 +35,7 @@ export default class Pokedex extends Component {
           </AbilitiesSection>
         </SideBar>
         <PokemonsSection>
-          <List />
+          <PokemonList pokemons={pokemons} />
         </PokemonsSection>
       </Wrapper>
     );
@@ -57,10 +58,12 @@ const Item = styled.li`
   text-transform: uppercase;
   border-radius: 10px;
   margin: 0.7rem;
+  background-color: #f8f8f8;
+  font-weight: 400;
 `;
 
 const PokemonsSection = styled.div`
-  width: 10rem;
-  height: 10rem;
+  width: 100%;
+  height: 100%;
   border: 2px solid black;
 `;
