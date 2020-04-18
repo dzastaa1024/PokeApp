@@ -7,7 +7,7 @@ import Stats from "../Stats";
 
 export default class ListElement extends Component {
   state = {
-    pokemon: [],
+    pokemon: null,
   };
 
   async componentDidMount() {
@@ -20,7 +20,9 @@ export default class ListElement extends Component {
 
   render() {
     const { pokemon } = this.state;
-    console.log("moj state", pokemon);
+    if (!pokemon) {
+      return "loading..";
+    }
     return (
       <Wrapper>
         <Card pokemon={pokemon} />

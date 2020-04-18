@@ -18,6 +18,6 @@ export default class PokemonList extends Component {
   }
 }
 
-const ListWrapper = styled.ul``;
-
-const Li = styled.li``;
+const ListWrapper = styled.ul`
+  list-style-type: none;
+`;

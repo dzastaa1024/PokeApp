@@ -17,11 +17,12 @@ const GlobalStyle = createGlobalStyle`
 		line-height: 1.3;
 		background: #5dd65d;
 		color: rgb(64, 78, 95);
+		height: 100vh;
   }
 
 #root {
-	height: 100vh;
-	overflow : hidden;
+	height: 100%;
+	
 	}
 	a {
 		text-decoration: none;

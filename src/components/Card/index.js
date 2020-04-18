@@ -7,7 +7,7 @@ export default class Card extends Component {
     return (
       <Wrapper>
         <ImageWrapper>
-          <Image />
+          <Image src={pokemon.sprites.front_default} />
         </ImageWrapper>
         <Name>{pokemon.name}</Name>
         <Abilities></Abilities>
@@ -37,3 +37,5 @@ const Name = styled.h3``;
 const Abilities = styled.p``;
 
 const Skills = styled.p``;
+
+//src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`}

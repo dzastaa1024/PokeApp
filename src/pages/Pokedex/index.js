@@ -26,7 +26,7 @@ export default class Pokedex extends Component {
     const { abilities, pokemons } = this.state;
     // console.log("Pokedex", pokemons.length);
     return (
-      <Wrapper>
+      <Page>
         <SideBar>
           <AbilitiesSection>
             {abilities.map((ability) => (
@@ -37,17 +37,22 @@ export default class Pokedex extends Component {
         <PokemonsSection>
           <PokemonList pokemons={pokemons} />
         </PokemonsSection>
-      </Wrapper>
+      </Page>
     );
   }
 }
 
-const Wrapper = styled.div`
-  display: flex;
+export const Page = styled.div`
   height: 100%;
+  overflow-y: scroll;
 `;
 
-const SideBar = styled.div``;
+const SideBar = styled.div`
+  position: fixed;
+  height: 100%;
+  width: 17rem;
+  overflow-y: scroll;
+`;
 
 const AbilitiesSection = styled.ul``;
 
@@ -63,7 +68,6 @@ const Item = styled.li`
 `;
 
 const PokemonsSection = styled.div`
-  width: 100%;
-  height: 100%;
   border: 2px solid black;
+  margin-left: 17rem;
 `;
