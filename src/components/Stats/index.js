@@ -7,4 +7,9 @@ export default class Stats extends Component {
   }
 }
 
-const Wrapper = styled.div``;
+const Wrapper = styled.div`
+  width: 20rem;
+  height: 20rem;
+  border: 1px solid red;
+  flex: 1 0 50%;
+`;

@@ -25,11 +25,22 @@ export default class ListElement extends Component {
     }
     return (
       <Wrapper>
-        <Card pokemon={pokemon} />
+        <Card pokemon={pokemon} pokemonType={pokemon.types} />
         <Stats pokemon={pokemon} />
       </Wrapper>
     );
   }
 }
 
-const Wrapper = styled.li``;
+const Wrapper = styled.li`
+  padding: 4rem;
+  background-color: #eaeaea;
+
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  &:nth-child(2n + 1) {
+    background-color: whitesmoke;
+  }
+`;

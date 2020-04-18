@@ -2,29 +2,62 @@ import React, { Component } from "react";
 import styled from "styled-components";
 
 export default class Card extends Component {
+  // state = {
+  //   pokemonTypes: [],
+  // };
+
+  // typeOfPokemons = () => {
+  //   const pokemonTypes = [];
+
+  //   this.props.pokemon.types.map((singlePokemon) => {
+  //     return (pokemonTypes = singlePokemon.type.name);
+  //   });
+
+  //   this.setState({
+  //     pokemonTypes: pokemonTypes,
+  //   });
+  // };
+
   render() {
-    const { pokemon } = this.props;
+    const { pokemon, pokemonType } = this.props;
+    // const { pokemonTypes } = this.state;
+
+    console.log("pokemon ", pokemon);
+    console.log("pokemontyp", pokemonType);
+
     return (
       <Wrapper>
         <ImageWrapper>
           <Image src={pokemon.sprites.front_default} />
         </ImageWrapper>
         <Name>{pokemon.name}</Name>
-        <Abilities></Abilities>
-        <Skills></Skills>
+        <Abilities>
+          {pokemonType.map((abilitie) => {
+            return <Skills>{abilitie.type.name}</Skills>;
+          })}
+        </Abilities>
+        <Weight>Weight : {pokemon.weight}</Weight>
       </Wrapper>
     );
   }
 }
 
-const Wrapper = styled.li`
-  width: 30rem;
-  height: 30rem;
+const Wrapper = styled.div`
+  border: 1px solid red;
+  flex: 1 0 50%;
+
+  text-align: center;
+  border-radius: 14px;
+  background-color: white;
+  box-shadow: 0 0 2px 0px;
+  border: none;
 `;
 
 const ImageWrapper = styled.div`
-  width: 10rem;
-  height: 10rem;
+  height: 16rem;
+  width: 16rem;
+  padding: 1rem;
+  margin: auto;
 `;
 
 const Image = styled.img`
@@ -32,10 +65,24 @@ const Image = styled.img`
   height: 100%;
 `;
 
-const Name = styled.h3``;
+const Name = styled.h3`
+  padding-bottom: 2rem;
 
-const Abilities = styled.p``;
+  &::first-letter {
+    text-transform: uppercase;
+  }
+`;
+
+const Abilities = styled.p`
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding-bottom: 2rem;
+`;
 
 const Skills = styled.p``;
 
-//src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`}
+const Weight = styled.p`
+  padding-bottom: 1.5rem;
+  font-weight: 600;
+`;

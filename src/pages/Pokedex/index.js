@@ -52,6 +52,7 @@ const SideBar = styled.div`
   height: 100%;
   width: 17rem;
   overflow-y: scroll;
+  background-color: white;
 `;
 
 const AbilitiesSection = styled.ul``;
@@ -63,7 +64,7 @@ const Item = styled.li`
   text-transform: uppercase;
   border-radius: 10px;
   margin: 0.7rem;
-  background-color: #f8f8f8;
+  background-color: #f3f3f3;
   font-weight: 400;
 `;
 
