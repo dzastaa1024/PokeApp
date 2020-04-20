@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export default class Card extends Component {
   // state = {
@@ -27,7 +27,10 @@ export default class Card extends Component {
 
     return (
       <Wrapper>
+        <CloseIcon right>{pokemon.height}m</CloseIcon>
+        <CloseIcon>{pokemon.weight}kg </CloseIcon>
         <ImageWrapper>
+          text
           <Image src={pokemon.sprites.front_default} />
         </ImageWrapper>
         <Name>{pokemon.name}</Name>
@@ -36,11 +39,29 @@ export default class Card extends Component {
             return <Skills>{abilitie.type.name}</Skills>;
           })}
         </Abilities>
-        <Weight>Weight : {pokemon.weight}</Weight>
       </Wrapper>
     );
   }
 }
+
+const CloseIcon = styled.span`
+  width: 6rem;
+  height: 6rem;
+  line-height: 5rem;
+  color: #6b6969;
+  background: white;
+  border-radius: 5rem;
+  position: absolute;
+  top: -1.5rem;
+  right: -1.5rem;
+  font-weight: 600;
+
+  ${(props) =>
+    props.right &&
+    css`
+      left: -1.5rem;
+    `}
+`;
 
 const Wrapper = styled.div`
   border: 1px solid red;
@@ -48,9 +69,10 @@ const Wrapper = styled.div`
 
   text-align: center;
   border-radius: 14px;
-  background-color: white;
+  background-color: #fbf9f9;
   box-shadow: 0 0 1px 0px;
   border: none;
+  position: relative;
 `;
 
 const ImageWrapper = styled.div`
@@ -67,6 +89,9 @@ const Image = styled.img`
 
 const Name = styled.h3`
   padding-bottom: 2rem;
+  font-weight: 600;
+  color: #6b6969;
+  font-size: 2.7rem;
 
   &::first-letter {
     text-transform: uppercase;

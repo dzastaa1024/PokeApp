@@ -53,15 +53,31 @@ const Numbers = styled.span`
 
 const Chart = styled.div`
   position: absolute;
-  background-color: red;
   height: 7px;
   border-radius: 3px;
 
   ${(props) =>
-    props.width &&
+    props.width < 30 &&
     css`
       width: ${props.width}px;
+      background-color: red;
     `}
+
+  ${(props) =>
+    props.width >= 30 &&
+    props.width < 75 &&
+    css`
+      width: ${props.width}px;
+      background-color: #ffc65e;
+    `}
+
+    ${(props) =>
+      props.width >= 75 &&
+      css`
+        width: ${props.width}px;
+        background-color: #24cc24;
+      `}
+
 `;
 
 const ChartWrapper = styled.div`
