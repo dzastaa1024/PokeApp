@@ -1,8 +1,27 @@
 import React, { Component } from "react";
 import styled from "styled-components";
+import { Bar } from "react-chartjs-2";
 
 export default class Stats extends Component {
+  gettingLabelsandData = () => {
+    const labels = this.props.pokemonStats.map((stat) => stat.base_stat);
+
+    return labels;
+  };
+
   render() {
+    const dataForCharts = {
+      labels: this.gettingLabelsandData(),
+      datasets: [
+        {
+          backgroundColor: `red`,
+          data: this.gettingLabelsandData(),
+        },
+      ],
+    };
+
+    console.log("moje dane", dataForCharts);
+
     const { pokemonStats } = this.props;
     return (
       <Wrapper>
@@ -17,7 +36,14 @@ export default class Stats extends Component {
               <Numbers>{stat.base_stat}</Numbers>
             ))}
           </StatsList>
-          <Chart> tu beda slupki </Chart>
+          <Chart>
+            <Bar
+              data={dataForCharts}
+              width={250}
+              height={200}
+              options={{ maintainAspectRatio: false }}
+            />
+          </Chart>
         </StatsWrapper>
       </Wrapper>
     );
