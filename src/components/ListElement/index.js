@@ -26,7 +26,7 @@ export default class ListElement extends Component {
     return (
       <Wrapper>
         <Card pokemon={pokemon} pokemonType={pokemon.types} />
-        <Stats pokemon={pokemon} />
+        <Stats pokemonStats={pokemon.stats} />
       </Wrapper>
     );
   }

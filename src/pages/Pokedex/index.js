@@ -69,6 +69,5 @@ const Item = styled.li`
 `;
 
 const PokemonsSection = styled.div`
-  border: 2px solid black;
   margin-left: 17rem;
 `;

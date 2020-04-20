@@ -49,7 +49,7 @@ const Wrapper = styled.div`
   text-align: center;
   border-radius: 14px;
   background-color: white;
-  box-shadow: 0 0 2px 0px;
+  box-shadow: 0 0 1px 0px;
   border: none;
 `;
 
@@ -78,6 +78,7 @@ const Abilities = styled.p`
   align-items: center;
   justify-content: space-around;
   padding-bottom: 2rem;
+  text-transform: uppercase;
 `;
 
 const Skills = styled.p``;
