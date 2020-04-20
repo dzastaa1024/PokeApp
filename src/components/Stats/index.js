@@ -1,50 +1,22 @@
 import React, { Component } from "react";
-import styled from "styled-components";
-import { Bar } from "react-chartjs-2";
+import styled, { css } from "styled-components";
 
 export default class Stats extends Component {
-  gettingLabelsandData = () => {
-    const labels = this.props.pokemonStats.map((stat) => stat.base_stat);
-
-    return labels;
-  };
-
   render() {
-    const dataForCharts = {
-      labels: this.gettingLabelsandData(),
-      datasets: [
-        {
-          backgroundColor: `red`,
-          data: this.gettingLabelsandData(),
-        },
-      ],
-    };
-
-    console.log("moje dane", dataForCharts);
-
     const { pokemonStats } = this.props;
     return (
       <Wrapper>
-        <StatsWrapper>
-          <StatsList>
-            {pokemonStats.map((stat) => (
+        <StatsList>
+          {pokemonStats.map((stat) => (
+            <Container>
               <Cathegory>{stat.stat.name}</Cathegory>
-            ))}
-          </StatsList>
-          <StatsList>
-            {pokemonStats.map((stat) => (
               <Numbers>{stat.base_stat}</Numbers>
-            ))}
-          </StatsList>
-          <Chart>
-            <Bar
-              data={dataForCharts}
-              width={250}
-              height={200}
-              options={{ maintainAspectRatio: false }}
-            />
-          </Chart>
-        </StatsWrapper>
+              <ChartWrapper>
+                <Chart width={stat.base_stat}></Chart>
+              </ChartWrapper>
+            </Container>
+          ))}
+        </StatsList>
       </Wrapper>
     );
   }
@@ -56,28 +28,47 @@ const Wrapper = styled.div`
   flex: 1 0 50%;
   padding: 1rem;
   font-size: 1.5rem;
-`;
-
-const StatsWrapper = styled.div`
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  line-height: 160%;
+  line-height: 200%;
 `;
 
 const StatsList = styled.ul`
   list-style-type: none;
-  text-align: end;
 `;
 
-const Cathegory = styled.li`
+const Container = styled.li`
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+`;
+
+const Cathegory = styled.span`
   &::first-letter {
     text-transform: uppercase;
   }
 `;
 
-const Numbers = styled.li``;
+const Numbers = styled.span`
+  padding: 0 4rem 0 4rem;
+`;
 
 const Chart = styled.div`
+  position: absolute;
+  background-color: red;
+  height: 7px;
+  border-radius: 3px;
+
+  ${(props) =>
+    props.width &&
+    css`
+      width: ${props.width}px;
+    `}
+`;
+
+const ChartWrapper = styled.div`
   width: 40%;
+  background-color: #d0cfcf;
+  height: 7px;
+  border-radius: 4px;
+
+  position: relative;
 `;
