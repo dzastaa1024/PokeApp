@@ -5,19 +5,33 @@ import ListElement from "../ListElement";
 
 export default class PokemonList extends Component {
   render() {
-    const { pokemons } = this.props;
-    // console.log(pokemons.length);
+    const { pokemons, pokemonFilters, pokemonsToRender } = this.props;
     return (
       <ListWrapper>
-        {pokemons.length > 0 &&
+        {/* {pokemons.length > 0 &&
           pokemons.map((pokemon) => {
-            return <ListElement pokemon={pokemon} key={pokemons.name} />;
+            return (
+              <ListElement
+                pokemon={pokemon}
+                key={pokemons.name}
+                pokemonFilters={pokemonFilters}
+              />
+            );
+          })} */}
+
+        {pokemonsToRender > 0 &&
+          pokemonsToRender.map((pokemon) => {
+            return (
+              <ListElement
+                pokemon={pokemon}
+                key={pokemons.name}
+                pokemonFilters={pokemonFilters}
+              />
+            );
           })}
       </ListWrapper>
     );
   }
 }
 
-const ListWrapper = styled.ul`
-  list-style-type: none;
-`;
+const ListWrapper = styled.ul``;

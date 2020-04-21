@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import styled, { css } from "styled-components";
+import { fontColor, darkerGrey } from "../../colors";
 
 export default class Stats extends Component {
   render() {
@@ -8,7 +9,7 @@ export default class Stats extends Component {
       <Wrapper>
         <StatsList>
           {pokemonStats.map((stat) => (
-            <Container>
+            <Container key={stat.stat.name}>
               <Cathegory>{stat.stat.name}</Cathegory>
               <Numbers>{stat.base_stat}</Numbers>
               <ChartWrapper>
@@ -42,6 +43,8 @@ const Container = styled.li`
 `;
 
 const Cathegory = styled.span`
+  font-weight: 600;
+  color: ${fontColor};
   &::first-letter {
     text-transform: uppercase;
   }
@@ -82,7 +85,7 @@ const Chart = styled.div`
 
 const ChartWrapper = styled.div`
   width: 40%;
-  background-color: #d0cfcf;
+  background-color: ${darkerGrey};
   height: 7px;
   border-radius: 4px;
 

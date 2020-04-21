@@ -1,31 +1,21 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 import * as fetcher from "../../fetcher";
+import { lightGrey, grey } from "../../colors";
 
 import Card from "../Card";
 import Stats from "../Stats";
 
 export default class ListElement extends Component {
-  state = {
-    pokemon: null,
-  };
-
-  async componentDidMount() {
-    const pokemon = await fetcher.fetchPokemon(this.props.pokemon.url);
-
-    this.setState({
-      pokemon: pokemon,
-    });
-  }
-
   render() {
-    const { pokemon } = this.state;
+    const { pokemon } = this.props;
     if (!pokemon) {
       return "loading..";
     }
+
     return (
       <Wrapper>
-        <Card pokemon={pokemon} pokemonType={pokemon.types} />
+        <Card pokemon={pokemon} />
         <Stats pokemonStats={pokemon.stats} />
       </Wrapper>
     );
@@ -34,13 +24,13 @@ export default class ListElement extends Component {
 
 const Wrapper = styled.li`
   padding: 4rem;
-  background-color: #eaeaea;
+  background-color: ${grey};
 
   display: flex;
   justify-content: space-around;
   align-items: center;
 
   &:nth-child(2n + 1) {
-    background-color: whitesmoke;
+    background-color: ${lightGrey};
   }
 `;

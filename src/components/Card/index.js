@@ -1,50 +1,39 @@
 import React, { Component } from "react";
 import styled, { css } from "styled-components";
+import { primaryColor, darkerGrey } from "../../colors";
 
 export default class Card extends Component {
-  // state = {
-  //   pokemonTypes: [],
-  // };
-
-  // typeOfPokemons = () => {
-  //   const pokemonTypes = [];
-
-  //   this.props.pokemon.types.map((singlePokemon) => {
-  //     return (pokemonTypes = singlePokemon.type.name);
-  //   });
-
-  //   this.setState({
-  //     pokemonTypes: pokemonTypes,
-  //   });
-  // };
-
   render() {
-    const { pokemon, pokemonType } = this.props;
-    // const { pokemonTypes } = this.state;
+    const { pokemon } = this.props;
 
-    console.log("pokemon ", pokemon);
-    console.log("pokemontyp", pokemonType);
+    // console.log("pokemon ", pokemon);
+    // console.log("pokemontyp", pokemonType);
 
     return (
       <Wrapper>
-        <CloseIcon right>{pokemon.height}m</CloseIcon>
-        <CloseIcon>{pokemon.weight}kg </CloseIcon>
+        <BackgroundId> #{pokemon.id}</BackgroundId>
+        <Circle right>{pokemon.height}m</Circle>
+        <Circle>{pokemon.weight}kg </Circle>
         <ImageWrapper>
-          text
           <Image src={pokemon.sprites.front_default} />
         </ImageWrapper>
         <Name>{pokemon.name}</Name>
-        <Abilities>
-          {pokemonType.map((abilitie) => {
-            return <Skills>{abilitie.type.name}</Skills>;
+        <Skills>
+          {pokemon.abilities.map((ability) => {
+            return <Abilities>{ability.ability.name}</Abilities>;
           })}
-        </Abilities>
+        </Skills>
+        <Skills>
+          {pokemon.types.map((type) => {
+            return <Type key={type.type.url}>{type.type.name}</Type>;
+          })}
+        </Skills>
       </Wrapper>
     );
   }
 }
 
-const CloseIcon = styled.span`
+const Circle = styled.span`
   width: 6rem;
   height: 6rem;
   line-height: 5rem;
@@ -63,6 +52,15 @@ const CloseIcon = styled.span`
     `}
 `;
 
+const BackgroundId = styled.div`
+  width: 100%;
+  font-size: 12rem;
+  position: absolute;
+  z-index: 1;
+  color: ${darkerGrey};
+  font-weight: 600;
+`;
+
 const Wrapper = styled.div`
   border: 1px solid red;
   flex: 1 0 50%;
@@ -70,7 +68,7 @@ const Wrapper = styled.div`
   text-align: center;
   border-radius: 14px;
   background-color: #fbf9f9;
-  box-shadow: 0 0 1px 0px;
+  box-shadow: 0 0 20px 0px;
   border: none;
   position: relative;
 `;
@@ -80,6 +78,9 @@ const ImageWrapper = styled.div`
   width: 16rem;
   padding: 1rem;
   margin: auto;
+
+  z-index: 2;
+  position: relative;
 `;
 
 const Image = styled.img`
@@ -90,7 +91,7 @@ const Image = styled.img`
 const Name = styled.h3`
   padding-bottom: 2rem;
   font-weight: 600;
-  color: #6b6969;
+  color: ${primaryColor};
   font-size: 2.7rem;
 
   &::first-letter {
@@ -98,7 +99,7 @@ const Name = styled.h3`
   }
 `;
 
-const Abilities = styled.p`
+const Skills = styled.ul`
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -106,9 +107,8 @@ const Abilities = styled.p`
   text-transform: uppercase;
 `;
 
-const Skills = styled.p``;
+const Type = styled.li``;
 
-const Weight = styled.p`
-  padding-bottom: 1.5rem;
+const Abilities = styled.li`
   font-weight: 600;
 `;
