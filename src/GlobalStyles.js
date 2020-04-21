@@ -1,4 +1,5 @@
 import { createGlobalStyle } from "styled-components";
+import { primaryColor } from "./colors";
 
 const GlobalStyle = createGlobalStyle`
 	*,
@@ -16,7 +17,7 @@ const GlobalStyle = createGlobalStyle`
 		font-family: "Lato", sans-serif;
 		line-height: 1.3;
 		background: #5dd65d;
-		color: rgb(64, 78, 95);
+		color: ${primaryColor};
 		height: 100vh;
   }
 
@@ -33,6 +34,9 @@ const GlobalStyle = createGlobalStyle`
 		background-color: transparent;
 	}
 	
+	ul {
+		list-style-type: none;
+	}
 `;
 
 export default GlobalStyle;
